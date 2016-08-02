@@ -1,6 +1,6 @@
 #pragma once
 
-typedef struct Modules {
+typedef struct {
   char* mod_name;  /* How the actual loaded kmod file name is seen in `lsmod` */
   char* conf_name; /* CONF_MODULE_NAME=y as appears in Linux kernel's .config */
 } Module;
@@ -11,15 +11,19 @@ Module modules[] = {
   { "ahci", "SATA_AHCI" },
   { "amd_freq_sensitivity", "X86_AMD_FREQ_SENSITIVITY" },
   { "autofs4", "AUTOFS4_FS" },
+  { "bluetooth", "BT" },
   { "btrfs", "BTRFS_FS" },
   { "button", "ACPI_BUTTON" },
   { "cfg80211", "CFG80211" },
+  { "crct10dif_pclmul", "CRYPTO_CRCT10DIF_PCLMUL" },
   { "crc16", "CRC16" },
-  { "crc32c_intel", "CRYPTO_CRC32_INTEL" },
+  { "crc32c_intel", "CRYPTO_CRC32C_INTEL" },
   { "crc32_pclmul", "CRYPTO_CRC32_PCLMUL" },
   { "cryptd", "CRYPTO_CRYPTD" },
   { "dca", "DCA" },
   { "ecb", "CRYPTO_ECB" },
+  { "edac_core", "EDAC" },
+  { "edac_mce_amd", "EDAC_AMD64" },
   { "ehci_hcd", "USB_EHCI_HCD" },
   { "ehci_pci", "USB_EHCI_PCI" },
   { "evdev", "INPUT_EVDEV" },
@@ -32,6 +36,7 @@ Module modules[] = {
   { "hid_roccat", "HID_ROCCAT" },
   { "hid_roccat_common", "HID_ROCCAT" },
   { "hid_roccat_isku", "HID_ROCCAT" },
+  { "i2c_algo_bit", "I2C_ALGOBIT" },
   { "i2c_piix4", "I2C_PIIX4" },
   { "igb", "IGB" },
   { "iwlwifi", "IWLWIFI" },
@@ -43,13 +48,18 @@ Module modules[] = {
   { "mmc_block", "MMC_BLOCK" },
   { "mmc_core", "MMC" },
   { "nls_cp437", "NLS_CODEPAGE_437" },
+  { "nls_utf8", "NLS_UTF8" },
+  { "ohci_hcd", "USB_OHCI_HCD" },
   { "parport", "PARPORT" },
   { "parport_pc", "PARPORT_PC" },
   { "ppdev", "PPDEV" },
+  { "pps_core", "PPS" },
   { "raid6_pq", "RAID6_PQ" },
   { "rfkill", "RFKILL" },
   { "sdhci", "MMC_SDHCI" },
   { "sdhci_pci", "MMC_SDHCI_PCI" },
+  { "snd_hda", "SND_HDA" },
+  { "snd_hda_codec_hdmi", "SND_HDA_CODEC_HDMI" },
   { "snd_hda_codec_realtek", "SND_HDA_CODEC_REALTEK" },
   { "snd_hda_intel", "SND_HDA_INTEL" },
   { "snd_hwdep", "SND_HWDEP" },
@@ -58,6 +68,8 @@ Module modules[] = {
   { "snd_timer", "SND_TIMER" },
   { "snd_usb_audio", "SND_USB_AUDIO" },
   { "usb_storage", "USB_STORAGE" },
+  { "usbhid", "USB_HID" },
   { "vfat", "VFAT_FS" },
+  { "xhci_hcd", "USB_XHCI_HCD" },
   { "xor", "XOR_BLOCKS" },
 };

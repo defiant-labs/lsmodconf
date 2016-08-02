@@ -67,15 +67,31 @@ int main(int argc, char** argv) {
       conf_name_from_line[strlen(conf_name)] = '\0';
       if (strcmp(conf_name_from_line, conf_name) == 0
           && conf_line[strlen(conf_name)] == '=') {
-        matched = 1;
         printf("%s", conf_line);
+        matched = 1;
       }
     }
     fclose(conf_file);
 
-    if (!matched) {
-      printf("# Config string %s for module %s could not be found\n", conf_name,
-              mod_name);
+    if (matched)
+      continue;
+
+    conf_file = fopen(argv[1], "r");
+    while (fgets(conf_line, LINE_MAX, conf_file) != NULL) {
+      strcpy(conf_name_from_line, "# ");
+      strcat(conf_name_from_line, conf_name);
+      strcat(conf_name_from_line, " is not set\n");
+      if (strcmp(conf_name_from_line, conf_line) == 0) {
+        printf("%s", conf_line);
+        matched = 1;
+      }
     }
+    fclose(conf_file);
+
+    if (matched)
+      continue;
+
+    printf("# Config string %s for module %s could not be found\n", conf_name,
+              mod_name);
   }
 }
