@@ -7,7 +7,10 @@ Its aim is to help build lightweight kernel configurations.
 
 ### Usage
 
+Within Linux source code tree:
 `lsmod | ./lsmodconf .config`
+Against /boot/config:
+`lsmod | ./lsmodconf /boot/config-*`
 
 
 ### How it works

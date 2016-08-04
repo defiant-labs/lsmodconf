@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
 
     // Handle unknown module names
     if (conf_name[0] == '\0') {
-      printf("# Module %s is unknown\n", mod_name);
+      printf("\033[33m# Module %s is unknown\033[0m\n", mod_name);
       continue;
     }
 
@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
     if (matched)
       continue;
 
-    printf("# Config string %s for module %s could not be found\n", conf_name,
-              mod_name);
+    printf("\033[31m# Config string %s for module %s could not be found\033[0m\n",
+            conf_name, mod_name);
   }
 }
