@@ -1,17 +1,23 @@
 #pragma once
 
+
 typedef struct {
   char* mod_name;  /* How the actual loaded kmod file name is seen in `lsmod` */
   char* conf_name; /* CONF_MODULE_NAME=y as appears in Linux kernel's .config */
 } Module;
 
 Module modules[] = {
+  /* Config constants based on Linux 3.16.x source code tree */
+  { "6lowpan_iphc", "6LOWPAN_IPHC" },
   { "ablk_helper", "CRYPTO_ABLK_HELPER" },
   { "ac", "ACPI_AC" },
   { "acpi_cpufreq", "X86_ACPI_CPUFREQ" },
   { "aes", "CRYPTO_AES" },
   { "aes_x86_64", "CRYPTO_AES_X86_64" },
+  { "aesni_intel", "CRYPTO_AES_NI_INTEL" },
+  { "af_alg", "CRYPTO_USER_API" },
   { "ahci", "SATA_AHCI" },
+  { "algif_skcipher", "CRYPTO_USER_API_SKCIPHER" },
   { "amd_freq_sensitivity", "X86_AMD_FREQ_SENSITIVITY" },
   { "ath9k", "ATH9K" },
   { "ath9k_common", "ATH9K_COMMON" },
@@ -43,6 +49,8 @@ Module modules[] = {
   { "dca", "DCA" },
   { "dell_smo8800", "DELL_SMO8800" },
   { "dell_wmi", "DELL_WMI_AIO" },
+  { "dm_crypt", "DM_CRYPT" },
+  { "dm_mod", "BLK_DEV_DM" },
   { "ecb", "CRYPTO_ECB" },
   { "edac_core", "EDAC" },
   { "edac_mce_amd", "EDAC_AMD64" },
@@ -64,6 +72,7 @@ Module modules[] = {
   { "hfs", "HFS_FS" },
   { "hfsplus", "HFSPLUS_FS" },
   { "i2c_algo_bit", "I2C_ALGOBIT" },
+  { "i2c_core", "I2C" },
   { "i2c_i801", "I2C_I801" },
   { "i2c_piix4", "I2C_PIIX4" },
   { "igb", "IGB" },
@@ -78,12 +87,14 @@ Module modules[] = {
   { "k10temp", "SENSORS_K10TEMP" },
   { "kvm", "KVM" },
   { "kvm_amd", "KVM_AMD" },
+  { "libahci", "SATA_AHCI" }, // depended on by multiple modules
   { "libata", "ATA" },
   { "lockd", "LOCKD" },
   { "lp", "PRINTER" },
   { "lpc_ich", "LPC_ICH" },
   { "lrw", "CRYPTO_LRW" },
   { "mac80211", "MAC80211" },
+  { "mbcache", "FS_MBCACHE" },
   { "memstick", "MEMSTICK" },
   { "minix", "MINIX_FS" },
   { "mmc_block", "MMC_BLOCK" },
@@ -116,19 +127,26 @@ Module modules[] = {
   { "shpchp", "HOTPLUG_PCI_SHPC" },
   { "snd", "SND" },
   { "snd_hda", "SND_HDA" },
+  { "snd_hda_codec", "SND_HDA" },
+  { "snd_hda_codec_generic", "SND_HDA_GENERIC" },
   { "snd_hda_codec_hdmi", "SND_HDA_CODEC_HDMI" },
   { "snd_hda_codec_realtek", "SND_HDA_CODEC_REALTEK" },
+  { "snd_hda_controller", "SND_HDA" },
   { "snd_hda_intel", "SND_HDA_INTEL" },
   { "snd_hwdep", "SND_HWDEP" },
   { "snd_pcm", "SND_PCM" },
   { "snd_rawmidi", "SND_RAWMIDI" },
+  { "snd_seq_device", "SND_SEQUENCER" },
   { "snd_timer", "SND_TIMER" },
   { "snd_usb_audio", "SND_USB_AUDIO" },
+  { "snd_usbmidi_lib", "SND_USB_AUDIO" }, // depended on by multiple modules
   { "soundcore", "SOUND" },
   { "sunrpc", "SUNRPC" },
   { "tpm", "TCG_TPM" },
+  { "thermal_sys", "THERMAL" },
   { "tpm_tis", "TCG_TIS" },
   { "ufs", "UFS_FS" },
+  { "usb_common", "USB_COMMON" },
   { "usb_storage", "USB_STORAGE" },
   { "usbcore", "USB" },
   { "usbhid", "USB_HID" },
